@@ -1,9 +1,7 @@
 // backend/scripts/add-bulk-games.js
 
-const Database = require('better-sqlite3');
-const path = require('path');
-
-const db = new Database(path.join(__dirname, '..', 'gamevault.db'));
+// Use the same database config as the main app so it respects DATABASE_PATH, WAL, etc.
+const { db, initDatabase } = require('../config/database');
 
 // All games - includes existing 16 + 5 new ones = 21 total
 const games = [
@@ -200,6 +198,9 @@ function seedGames() {
     console.log('='.repeat(50));
 
     try {
+        // Make sure tables exist
+        initDatabase();
+
         // Clear existing games
         console.log('\n🗑️  Clearing existing games...');
         db.exec('DELETE FROM games');
@@ -304,7 +305,7 @@ function seedGames() {
         console.error(error.stack);
         process.exit(1);
     } finally {
-        db.close();
+        // Nothing to do; db connection is managed by config/database.js
     }
 }
 
