@@ -7,7 +7,7 @@ const path = require('path');
 
 const corsMiddleware = require('./middleware/cors');
 const { errorHandler, notFound } = require('./middleware/errorHandler');
-const { apiLimiter } = require('./middleware/rateLimit');
+const apiLimiter = require('./middleware/rateLimit');
 const routes = require('./routes');
 const { initDatabase } = require('./config/database');
 
