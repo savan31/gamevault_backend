@@ -164,23 +164,6 @@ const games = [
         mobile_friendly: true
     },
 
-    // ============ SPORTS (8 Ball Pool) ============
-    {
-        title: "8 Ball Pool",
-        slug: "8-ball-pool",
-        description: "Classic online 8-ball pool game. Challenge players around the world and become the pool champion.",
-        instructions: "Aim with your mouse, drag to set power, and release to shoot. Pot your balls and then the 8 ball to win.",
-        category: "Sports",
-        thumbnail_url: "https://picsum.photos/seed/8ballpool/512/384",
-        game_url: "https://www.miniclip.com/games/8-ball-pool-multiplayer/",
-        width: 960,
-        height: 600,
-        featured: true,
-        trending: true,
-        multiplayer: true,
-        mobile_friendly: true
-    },
-
 
 
 ];
