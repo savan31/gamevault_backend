@@ -179,7 +179,7 @@ class Game {
             FROM games g
             LEFT JOIN categories c ON g.category_id = c.id
             WHERE g.status = 'active'
-            ORDER BY g.plays DESC, g.created_at DESC
+            ORDER BY g.trending DESC, g.featured DESC, g.plays DESC, g.created_at DESC
             LIMIT ?
         `);
         return stmt.all(limit);
