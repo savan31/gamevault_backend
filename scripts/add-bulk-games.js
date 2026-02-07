@@ -166,6 +166,21 @@ const games = [
 
 
 
+    {
+        title: "Pacman",
+        slug: "pacman",
+        description: "Classic arcade game where you navigate a maze, eat dots, and avoid ghosts",
+        instructions: "Use arrow keys to move",
+        category: "Arcade",
+        thumbnail_url: "https://picsum.photos/seed/pacman/512/384",
+        game_url: "/games/pacman/index.html",
+        width: 800,
+        height: 600,
+        featured: true,
+        trending: true,
+        multiplayer: false,
+        mobile_friendly: true
+    }
 ];
 
 // Category name to ID mapping
