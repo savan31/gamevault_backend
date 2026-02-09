@@ -224,16 +224,27 @@ class Game {
     }
 
     static getCount(options = {}) {
-        let query = 'SELECT COUNT(*) as count FROM games WHERE status = ?';
+        let query = `
+            SELECT COUNT(*) as count 
+            FROM games g
+            LEFT JOIN categories c ON g.category_id = c.id
+            WHERE g.status = ?
+        `;
         const params = [options.status || 'active'];
 
         if (options.category_id) {
-            query += ' AND category_id = ?';
+            // If it's a number, it's an ID, otherwise it's a slug
+            if (typeof options.category_id === 'number' || !isNaN(options.category_id)) {
+                query += ' AND g.category_id = ?';
+            } else {
+                query += ' AND c.slug = ?';
+            }
             params.push(options.category_id);
         }
 
         const stmt = db.prepare(query);
-        return stmt.get(...params).count;
+        const result = stmt.get(...params);
+        return result ? result.count : 0;
     }
 
     static getAllForSitemap() {
